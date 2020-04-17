@@ -12,7 +12,7 @@ Introduce tu **clave privada**, el **número de amigos** que compartirán la cla
 
 #### Revelar
 
-Introduce el **número de amigos** que se necesitan para recuperar la clave. Cada amigo debe introducir su parte. Por último, haz clic en el botón **Revelar**.
+Introduce el **número de amigos** que se necesitan para recuperar la clave. Cada amigo **debe introducir su parte**. Por último, haz clic en el botón **Revelar**.
 
 ### Referencias
 
