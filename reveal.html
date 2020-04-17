@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>Secrets</title>
+</head>
+<body>
+<h1 id="revealSecrets"></h1>
+<p id="revealSecretsDesc"></p>
+<br>
+
+<label for="requiredFriends" id="requiredFriendsLabel"></label>
+<input type="number" id="requiredFriends" name="requiredFriends" size="1" required>
+<div id="form"></div>
+<div id="secret"></div>
+
+<br>
+<a id="goToShare" href="share.html"></a>
+<a id="home" href="index.html"></a>
+
+<script src="secrets.js"></script>
+<script src="i18n.js"></script>
+</body>
+<script>
+    // i18n
+    document.title = i18n.title;
+    document.getElementById("revealSecrets").innerHTML = i18n.revealSecrets;
+    document.getElementById("revealSecretsDesc").innerHTML = i18n.revealSecretsDesc;
+    document.getElementById("goToShare").innerHTML = i18n.goToShare; 
+    document.getElementById("requiredFriendsLabel").innerHTML = i18n.requiredFriends;
+    const requiredFriends = document.getElementById("requiredFriends");
+    document.getElementById("home").innerHTML = i18n.home;
+
+    // observe friends number changes
+    requiredFriends.onchange = (event) => {
+        event.preventDefault();
+        try {
+            const friendsNumber = parseInt(event.target.value);
+            if (friendsNumber > 1) {
+                let form = `<form class="form-inline">`
+                for (let index = 0; index < friendsNumber; index++) {
+                    const input = `
+                        <label for="share${index}">${i18n.friend} ${index + 1}</label>
+                        <input type="text" id="share${index}" name="share${index}" required>
+                    `;
+                    form += input;
+                }
+                form += `<button id="submit" type="submit"></button></form>`;
+                document.getElementById("form").innerHTML = form;
+                document.getElementById("submit").innerHTML = i18n.reveal;
+
+                // init the secrets library
+                secrets.init();
+                // get the form
+                const domForm = document.forms[0];
+                // listen for submit
+                domForm.addEventListener("submit", function(event) {
+                    event.preventDefault();
+                    new FormData(domForm);
+                });
+                // listen for domForm data
+                domForm.addEventListener("formdata", event => {
+                    const data = event.formData;
+                    const values = [...data.values()];
+                    try {            
+                        // reveal secret
+                        document.getElementById("secret").innerHTML = secrets.combine(values);
+                    } catch (error) {
+                        alert(error.message);
+                    }
+                });
+            } else {
+                document.getElementById("form").innerHTML = "";
+            }
+        } catch (error) {
+            alert(error.message);
+        }        
+    }  
+</script>
+</html>
