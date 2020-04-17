@@ -6,7 +6,7 @@ Share your keys with firends or family to recover them when needed.
 
 Double click `index.html` or `share.html` or `reveal.html`.
 
-#### Share
+#### Share
 
 Enter your **secret key**, then, enter the **number of friends, including you, of course!** that will share the key, and then, the number of **friends needed to recover** it. Finally click the **Share** button to get a **shared key for each friend**. You can then safely mail/print/write a key to a friend but remember: **these keys should NEVER remain together!**.
 
