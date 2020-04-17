@@ -58,7 +58,7 @@
         },
         es: {
             title: "Secretos Compartidos",
-            desc: "Comparte tus claves privadas con tu familia o amigos para poder recuperarla cuando sea necesario.",
+            desc: "Comparte tus claves privadas con tu familia o amigos para poder recuperarlas cuando sea necesario.",
             home: "Inicio",
             share: "Compartir",
             shareSecretsDesc: "Introduce tu <b>clave privada</b>, el <b>número de amigos</b> que compartirán la clav, <b>¡contándote a tí, por supuesto!</b> y el número de <b>amigos necesarios para recuperarla</b>. Finalmente, haz clic en el botón <b>Compartir</b> para obtener una <b>clave compartida para cada amigo</b>. Puedes enviar por correo/imprimir/escribir una clave a un amigo de forma segura, pero recuerda: <b>¡Estas claves NUNCA deben permanecer juntas!</b>.",

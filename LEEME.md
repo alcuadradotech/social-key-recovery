@@ -1,6 +1,8 @@
 ## Secretos Compartidos
 
-Comparte tus claves privadas con tu familia o amigos para poder recuperarla cuando sea necesario.
+Comparte tus claves privadas con tu familia o amigos para poder recuperarlas cuando sea necesario.
+
+<sub><sup>Esto está publicado [aquí](https://al2blockchain.github.io/social-key-recovery) como una demostración, pero **deberías** descargarlo y usarlo localmente en tu ordenador (¡si confías en él!).</sup></sub>
 
 ## Uso
 
