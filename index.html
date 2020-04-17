@@ -4,22 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="favicon.ico" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Secrets</title>
 </head>
 <body>
-<h1 id="title"></h1>
-<p id="desc"></p>
-<a id="share" href="share.html"></a>
-<a id="reveal" href="reveal.html"></a>
-
-<script src="i18n.js"></script>
-</body>
-<script>
-    document.title = i18n.title;
+    <div class="wrapper">
+        <header>
+            <p><span class="logo lock material-icons">lock</span></p>
+            <h1 id="title"></h1>
+        </header>
+        <p id="desc"></p>
+        <footer>
+            <a href="share.html"><span class="material-icons">share</span> <span id="share"></span></a>
     document.getElementById("title").innerHTML = i18n.title;
     document.getElementById("desc").innerHTML = i18n.desc;
     document.getElementById("share").innerHTML = i18n.share;
     document.getElementById("reveal").innerHTML = i18n.reveal;
+            <a href="reveal.html"><span class="material-icons">visibility</span> <span id="reveal"></span></a>
+        </footer>
+    </div>
+<script src="i18n.js"></script>
+</body>
+<script>
+    document.title = i18n.title;
 </script>
 </html>

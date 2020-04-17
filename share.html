@@ -4,28 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="favicon.ico" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Secrets</title>
 </head>
 <body>
-    <h1 id="shareSecrets"></h1>
-    <p id="shareSecretsDesc"></p>
-    <form class="form-inline">
-        <label for="secret" id="secretLabel"></label>
-        <input type="text" id="secret" name="secret" required>
+    <div class="wrapper">
+        <header>
+            <p><span class="logo lock material-icons">lock</span><span class="logo context material-icons">share</span></p>
+            <h1 id="shareSecrets"></h1>
+        </header>
+        <p id="shareSecretsDesc"></p>
+        <form class="form-inline">
+            <div class="form-row">
+                <label for="secret" id="secretLabel"></label>
+                <input type="text" id="secret" name="secret" required>
+            </div>
 
-        <label for="friends" id="friends"></label>
-        <input type="number" id="friends" name="friends" size="1" required>
-
-        <label for="requiredFriends" id="requiredFriends"></label>
-        <input type="number" id="requiredFriends" name="requiredFriends" size="1" required>
-
-        <button id="submit" type="submit"></button>
-    </form>
-    <ol id="shares"></ol>
-    <a id="reveal" href="reveal.html"></a>
-    <a id="home" href="index.html"></a>
-    
+            <div class="form-row">
+                <label for="friends" id="friends"></label>
+                <input type="number" id="friends" name="friends" size="1" required>
+            </div>
+            
+            <div class="form-row">
+                <label for="requiredFriends" id="requiredFriends"></label>
+                <input type="number" id="requiredFriends" name="requiredFriends" size="1" required>
+            </div>
+            <div class="form-row">
+                <button id="submit" type="submit"></button>
+            </div>
+        </form>
+        <ol id="shares"></ol>
+        <footer>
+            <a href="reveal.html"><span class="material-icons">visibility</span> <span id="reveal"></span></a>
+            <a href="index.html"><span class="material-icons">home</span> <span id="home"></span></a>
+        </footer>
+    </div>
     <script src="secrets.js"></script>
     <script src="i18n.js"></script>
 </body>

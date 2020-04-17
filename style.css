@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300,400,700&display=swap');
+
+html, body {
+    height: 100%;
+}
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Barlow', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #babcc6;
+}
+.wrapper {
+    width: 50%;
+    min-width: 300px;
+    max-width: 600px;
+    background-color: #031364;
+    border-radius: 5px;
+    padding: 0 20px;
+    margin-top: 5vh;
+    box-shadow: 0 0 5px rgba(12, 23, 53, 0.3);
+}
+
+header {
+    text-align: center;
+    padding: 1em 0 0;
+    
+}
+header p {
+    position: relative;
+}
+footer {
+    padding-top: 2em;
+    padding-bottom: 2.2em;
+    text-align: center;
+    border-top: 1px solid #2d409f;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0 20px;
+}
+a span {
+    vertical-align: middle;
+}
+a .material-icons {
+    font-size: 1.8em;
+}
+a:hover .material-icons {
+    color: #fff;;
+}
+
+h1 {
+    font-weight: 300;
+    color: #fff;
+    text-align: center;
+}
+
+p {
+    color: #b1b1f0;
+}
+p b {
+    font-weight: 400;
+    color: seashell;
+}
+ol {
+    padding: 0 0 0 40px;
+}
+ol li {
+    color: #b1b1f0;
+    padding: 0.3em 0 0.3em 20px;
+}
+.form-inline {
+    padding-top: 1em;
+}
+.form-row {
+    padding: 0 0 20px 20px;
+}
+label {
+    color: #aca8e6;
+    display: block;
+    padding-bottom: 0.3em;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 0.8em;
+}
+input[type="text"],
+input[type="number"] {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #4034e0;
+    clear: both;
+    color: #c3c9e6;
+}
+input[type="text"] {
+    width: 90%;
+    padding: 0.3em 5px;
+    font-size: 1.4em;
+}
+input[type="number"] {
+    width: 60px;
+    padding: 0.3em 5px;
+    font-size: 1.4em;
+}
+button,
+.button {
+    display: inline-block;
+    background-color: slateblue;
+    padding: 1em 30px;
+    text-decoration: none;
+    color: #fff;
+    border: none;
+    font-size: 1em;
+    border-radius: 3px;
+    box-shadow: 0 0 4px rgba(12, 23, 53, 0.75);
+}
+.center {
+    text-align: center;
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+.material-icons.logo {
+    font-size: 5em;
+    text-align: center;
+    color: #4034e0;
+}
+.material-icons.logo.context {
+    position: absolute;
+    color: #fff;
+    margin-left: -1.9em;
+    font-size: 1.8em;
+    top: 1.2em;
+    background-color: #4034e0;
+}
+#secret {
+    font-weight: 300;
+    color: #fff;
+    text-align: center;
+    font-size: 1.8em;
+}
