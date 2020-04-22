@@ -2,11 +2,11 @@
 
 Comparte tus claves con tu familia o amigos para poder recuperarlas cuando sea necesario.
 
-<sub><sup>Esto está publicado [aquí](https://al2blockchain.github.io/social-key-recovery) como una demostración, pero **deberías** descargarlo y usarlo localmente en tu ordenador (¡si confías en él!).</sup></sub>
+Esto está publicado [aquí](https://al2blockchain.github.io/social-key-recovery) como una demostración, pero puedes descargarlo libremente y lanzarlo en tu ordenador.
 
 ## Uso
 
-Haz doble click en algunio de los ficheros `index.html`, `share.html` o `reveal.html`.
+Si quieres compartir abre el fichero `share.html` y si quieres revelar, recuperar, abre el fichero `recover.html`.
 
 #### Compartir
 

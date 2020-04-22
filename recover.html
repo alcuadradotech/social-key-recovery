@@ -12,9 +12,9 @@
     <div class="wrapper">
         <header>
             <p><span class="logo lock material-icons">lock</span><span class="logo context material-icons">visibility</span></p>
-            <h1 id="revealSecrets"></h1>
+            <h1 id="recoverSecrets"></h1>
         </header>
-        <p id="revealSecretsDesc"></p>
+        <p id="recoverSecretsDesc"></p>
         <br>
 
         <label for="requiredFriends" id="requiredFriendsLabel"></label>
@@ -38,8 +38,8 @@
     let secret;
     // i18n
     document.title = i18n.title;
-    document.getElementById("revealSecrets").innerHTML = i18n.revealSecrets;
-    document.getElementById("revealSecretsDesc").innerHTML = i18n.revealSecretsDesc;
+    document.getElementById("recoverSecrets").innerHTML = i18n.recoverSecrets;
+    document.getElementById("recoverSecretsDesc").innerHTML = i18n.recoverSecretsDesc;
     document.getElementById("share").innerHTML = i18n.share; 
     document.getElementById("requiredFriendsLabel").innerHTML = i18n.requiredFriends;
     const requiredFriends = document.getElementById("requiredFriends");
@@ -63,7 +63,7 @@
                 }
                 form += `<div class="form-row"><button id="submit" type="submit"></button></div></form>`;
                 document.getElementById("form").innerHTML = form;
-                document.getElementById("submit").innerHTML = i18n.reveal;
+                document.getElementById("submit").innerHTML = i18n.recover;
 
                 // init the secrets library
                 secrets.init();
@@ -79,7 +79,7 @@
                     const data = event.formData;
                     const values = [...data.values()];
                     try {            
-                        // reveal secret
+                        // recover secret
                         secret = secrets.combine(values).hexDecode();
                         document.getElementById("secret").innerHTML = 
                             `<textarea id="secretText" name="secret" required>
