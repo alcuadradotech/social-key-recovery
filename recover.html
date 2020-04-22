@@ -10,14 +10,15 @@
 <body>
     <div class="wrapper">
         <header>
-            <p><span class="logo lock material-icons">lock</span><span class="logo context material-icons">visibility</span></p>
+            <a href="index.html" class="home"><span class="material-icons">home</span> <span id="home"></span></a>
+            <p><span class="logo lock material-icons">lock</span><span class="logo context material-icons flip-horizontal">share</span></p>
             <h1 id="recoverSecrets"></h1>
         </header>
-        <p id="recoverSecretsDesc"></p>
+        <p id="recoverSecretsDesc"  class="description"></p>
         <br>
 
-        <label for="requiredFriends" id="requiredFriendsLabel"></label>
-        <input type="number" id="requiredFriends" name="requiredFriends" size="1" required>
+        <label for="requiredPersons" id="requiredPersonsLabel"></label>
+        <input type="number" id="requiredPersons" name="requiredPersons" size="1" min="2" value="2" required>
         <div id="form"></div>
         <div id="secret"></div>
 
@@ -25,7 +26,6 @@
         
         <footer>
             <a href="share.html"><span class="material-icons">share</span>  <span id="share"></span></a>
-            <a href="index.html"><span class="material-icons">home</span> <span id="home"></span></a>
         </footer>
         
     </div>
@@ -40,12 +40,12 @@
     document.getElementById("recoverSecrets").innerHTML = i18n.recoverSecrets;
     document.getElementById("recoverSecretsDesc").innerHTML = i18n.recoverSecretsDesc;
     document.getElementById("share").innerHTML = i18n.share; 
-    document.getElementById("requiredFriendsLabel").innerHTML = i18n.requiredFriends;
-    const requiredFriends = document.getElementById("requiredFriends");
+    document.getElementById("requiredPersonsLabel").innerHTML = i18n.requiredPersons;
+    const requiredPersons = document.getElementById("requiredPersons");
     document.getElementById("home").innerHTML = i18n.home;
 
-    // observe friends number changes
-    requiredFriends.onchange = (event) => {
+    // observe persons number changes
+    requiredPersons.onchange = (event) => {
         event.preventDefault();
         try {
             const friendsNumber = parseInt(event.target.value);
@@ -54,13 +54,13 @@
                 for (let index = 0; index < friendsNumber; index++) {
                     const input = `
                         <div class="form-row">
-                        <label for="share${index}">${i18n.friend} ${index + 1}</label>
+                        <label for="share${index}">${i18n.person} ${index + 1}</label>
                         <input type="text" id="share${index}" name="share${index}" required>
                         </div>
                     `;
                     form += input;
                 }
-                form += `<div class="form-row"><button id="submit" type="submit"></button></div></form>`;
+                form += `<div class="center"><button id="submit" type="submit"></button></div></form>`;
                 document.getElementById("form").innerHTML = form;
                 document.getElementById("submit").innerHTML = i18n.recover;
 
@@ -84,7 +84,7 @@
                             `<textarea id="secretText" name="secret" required>
                                 ${secret}
                             </textarea>
-                            <button onclick="copy()">Copy</button>
+                            <a class="copy" href="#copy" onclick="copy()">Copy</button>
                             `;
                     } catch (error) {
                         alert(error.message);

@@ -1,5 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300,400,700&display=swap');
 
+:root {
+    --text-color: #b1b1f0;
+    --key-color: #b1b1f0;
+    --highlight-color: #fff;
+    --icon-color: #4034e0;
+    --box-bg-color-1: rgb(3, 19, 99);
+    --box-bg-color-1-lighter: rgb(10, 28, 121);
+    --page-bg-color-2: #f4e2e2;
+    --button-bg-color: #ec6767;
+    --button-bg-color-hover: #ec4f4f;
+    --mdc-theme-secondary: #4034e0;
+}
+
 html, body {
     height: 100%;
 }
@@ -10,13 +23,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    background-color: #f4e2e2;
+    background-color: var(--page-bg-color-2);
 }
 .wrapper {
     width: 50%;
     min-width: 300px;
     max-width: 600px;
-    background-color: #031364;
+    background-color: var(--box-bg-color-1);
     border-radius: 5px;
     padding: 0 20px;
     margin-top: 5vh;
@@ -26,7 +39,7 @@ body {
 header {
     text-align: center;
     padding: 1em 0 0;
-    
+    position: relative;
 }
 header p {
     position: relative;
@@ -35,44 +48,91 @@ footer {
     padding-top: 2em;
     padding-bottom: 2.2em;
     text-align: center;
-    border-top: 1px solid #2d409f;
 }
 
 a {
-    color: #fff;
+    color: var(--highlight-color);
     text-decoration: none;
     display: inline-block;
     padding: 0 20px;
+    text-transform: uppercase;
 }
 a span {
-    vertical-align: middle;
+    display: block;
+
 }
 a .material-icons {
+    color: var(--icon-color);
     font-size: 1.8em;
 }
 a:hover .material-icons {
-    color: #fff;;
+    color: var(--highlight-color);
+}
+a.home {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    padding: 0;
+}
+a.home span {
+    display: inline;
+    vertical-align: middle;
+}
+a.home #home {
+    visibility: hidden;
+}
+a.home:hover #home {
+    visibility: visible;
+}
+
+a.copy,
+a.mail {
+    vertical-align: middle;
+    padding: 0 10px;
+    display: inline-flex;
+}
+a.copy:hover,
+a.mail:hover {
+    color: var(--button-bg-color);
+}
+a.copy .material-icons {
+    visibility: hidden;
+    font-size: 20px;
+    color: var(--button-bg-color);
+}
+.copied a.copy .material-icons {
+    visibility: visible;
+}
+a.mail .material-icons {
+    vertical-align: middle;
+    font-size: 20px;
 }
 
 h1 {
     font-weight: 300;
-    color: #fff;
+    color: var(--highlight-color);
     text-align: center;
 }
 
 p {
-    color: #b1b1f0;
+    color: var(--text-color);
 }
 p b {
     font-weight: 400;
-    color: seashell;
+    color: var(--page-bg-color-2);
 }
 ol {
     padding: 0 0 0 40px;
 }
 ol li {
-    color: #b1b1f0;
+    color: var(--key-color);
     padding: 0.3em 0 0.3em 20px;
+}
+.description {
+    text-align: center;
+    font-size: 1.2em;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 .form-inline {
     padding-top: 1em;
@@ -81,35 +141,73 @@ ol li {
     padding: 0 0 20px 20px;
 }
 label {
-    color: #aca8e6;
+    color: var(--highlight-color);
     display: block;
     padding-bottom: 0.3em;
     font-weight: 400;
     text-transform: uppercase;
-    font-size: 0.8em;
+    font-size: 1em;
+}
+textarea {
+    position: relative;
+    background-color: var(--box-bg-color-1-lighter);
+    color: var( --text-color );
+    width: 97%;
+    padding-left: 2%;
+    min-height: 100px;
+    border: none;
+    font-family: 'Barlow', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 1.4em;
+    padding-top: 0.3em;
+    border-left: 2px solid var(--icon-color);
+    border-bottom: 2px solid var(--icon-color);
+}
+textarea:before, 
+textarea:after {
+    content: '';
+    display: block;
+    background-color: var(--icon-color);
+    position: absolute;
+}
+textarea::before {
+    width: 2px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+textarea::after {
+    height: 2px;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 input[type="text"],
 input[type="number"] {
-    background-color: transparent;
+    background-color: var(--box-bg-color-1-lighter);;
     border: none;
-    border-bottom: 2px solid #4034e0;
+    border-bottom: 2px solid var(--icon-color);
     clear: both;
     color: #c3c9e6;
 }
 input[type="text"] {
-    width: 90%;
+    width: 50%;
     padding: 0.3em 5px;
-    font-size: 1.4em;
+    font-size: 0.9em;
+    margin-right: 3%;
 }
 input[type="number"] {
     width: 60px;
     padding: 0.3em 5px;
     font-size: 1.4em;
+    text-align: center;
 }
 button,
 .button {
     display: inline-block;
-    background-color: slateblue;
+    background-color: var(--button-bg-color);
+    transition: all;
+    transition-duration: 250ms;
     padding: 1em 30px;
     text-decoration: none;
     color: #fff;
@@ -117,11 +215,30 @@ button,
     font-size: 1em;
     border-radius: 3px;
     box-shadow: 0 0 4px rgba(12, 23, 53, 0.75);
+    cursor: pointer;
+}
+button:hover,
+.button:hover {
+    background-color: var(--button-bg-color-hover);
+    box-shadow: 0 0 5px rgba(12, 23, 53, 0.95);
+}
+button.small,
+.button.small {
+    padding: 0.5em 10px;
+    font-size: 0.85;
+}
+
+#secret {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
 }
 .center {
     text-align: center;
 }
-
+.flip-horizontal {
+    -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
 .material-icons {
     font-family: 'Material Icons';
     font-weight: normal;
@@ -158,10 +275,4 @@ button,
     font-size: 1.8em;
     top: 1.2em;
     background-color: #4034e0;
-}
-#secret {
-    font-weight: 300;
-    color: #fff;
-    text-align: center;
-    font-size: 1.8em;
 }

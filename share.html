@@ -10,10 +10,11 @@
 <body>
     <div class="wrapper">
         <header>
+            <a href="index.html" class="home"><span class="material-icons">home</span> <span id="home"></span></a>
             <p><span class="logo lock material-icons">lock</span><span class="logo context material-icons">share</span></p>
             <h1 id="shareSecrets"></h1>
         </header>
-        <p id="shareSecretsDesc"></p>
+        <p id="shareSecretsDesc" class="description"></p>
         <form class="form-inline">
             <div class="form-row">
                 <label for="secret" id="secretLabel"></label>
@@ -21,22 +22,21 @@
             </div>
 
             <div class="form-row">
-                <label for="friends" id="friends"></label>
-                <input type="number" id="friends" name="friends" size="1" required>
+                <label for="persons" id="persons"></label>
+                <input type="number" id="persons" name="persons" size="1" min="2" value="2" required>
             </div>
             
             <div class="form-row">
-                <label for="requiredFriends" id="requiredFriends"></label>
-                <input type="number" id="requiredFriends" name="requiredFriends" size="1" required>
+                <label for="requiredPersons" id="requiredPersons"></label>
+                <input type="number" id="requiredPersons" name="requiredPersons" size="1" min="2" value="2" required>
             </div>
-            <div class="form-row center">
+            <div class="center">
                 <button id="submit" type="submit"></button>
             </div>
         </form>
         <ol id="shares"></ol>
         <footer>
-            <a href="recover.html"><span class="material-icons">visibility</span> <span id="recover"></span></a>
-            <a href="index.html"><span class="material-icons">home</span> <span id="home"></span></a>
+            <a href="recover.html"><span class="material-icons flip-horizontal">share</span> <span id="recover"></span></a>
         </footer>
     </div>
     <script src="assets/vendors/secrets.js"></script>
@@ -50,8 +50,8 @@
     document.getElementById("shareSecrets").innerHTML = i18n.shareSecrets;
     document.getElementById("shareSecretsDesc").innerHTML = i18n.shareSecretsDesc;
     document.getElementById("secretLabel").innerHTML = i18n.secretLabel;
-    document.getElementById("friends").innerHTML = i18n.friends;
-    document.getElementById("requiredFriends").innerHTML = i18n.requiredFriends;
+    document.getElementById("persons").innerHTML = i18n.persons;
+    document.getElementById("requiredPersons").innerHTML = i18n.requiredPersons;
     document.getElementById("recover").innerHTML = i18n.recover;
     document.getElementById("home").innerHTML = i18n.home;
     document.getElementById("submit").innerHTML = i18n.share;
@@ -69,26 +69,26 @@
         const data = event.formData;
         const values = [...data.values()];
         // get secret
-        let secret = values[0], friends, requiredFriends;        
-        // get friends and required friends
+        let secret = values[0], persons, requiredPersons;        
+        // get persons and required persons
         try {
-            // get friends
-            friends = parseInt(values[1]);
-            // get requiredFriends
-            requiredFriends = parseInt(values[2]);
+            // get persons
+            persons = parseInt(values[1]);
+            // get requiredPersons
+            requiredPersons = parseInt(values[2]);
         } catch (error) {
             alert(error.message);
             return;
         }
         // create the shares
         try {
-            shares = secrets.share(secret.hexEncode(), friends, requiredFriends);
+            shares = secrets.share(secret.hexEncode(), persons, requiredPersons);
             document.getElementById("shares").innerHTML = shares
                 .map((share, index) => 
-                    `<li>
+                    `<li id="share-list-element-${index}" class="share-list-element">
                         <input type="text" id="share${index}" value=${share}>
-                        <button onclick="copy(${index})">Copy</button>
-                        <a href="mailto:?subject=${i18n.subject}&body=${share}" target="_top">Send Mail</a>
+                        <a class="copy" href="#copy" onclick="copy(${index})">Copy <span class="material-icons">done</span></button>
+                        <a class="mail" href="mailto:?subject=${i18n.subject}&body=${share}" target="_top">Send Mail</a>
                      </li>`
                 ).toString().replace(/,/g, '');
         } catch (error) {
@@ -106,13 +106,22 @@
         }
         return result;
     }
-    function copy (index) {        
+    function copy (index) {
         // get the input
         const input = document.getElementById(`share${index}`);
         // select it
         input.select();
         // copy
         document.execCommand("copy");
+        
+        // Remove class from all other items first
+        /*
+        document.getElementsByClassName('share-list-element').forEach(function( current, index ){
+            current.classList.remove("copied")
+        }, this );
+        */
+        // Add class to copied item
+        document.getElementById(`share-list-element-${index}`).classList.add("copied");
     }
 </script>
 </html>
