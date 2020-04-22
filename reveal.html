@@ -34,6 +34,8 @@
 <script src="i18n.js"></script>
 </body>
 <script>
+    // the secret
+    let secret;
     // i18n
     document.title = i18n.title;
     document.getElementById("revealSecrets").innerHTML = i18n.revealSecrets;
@@ -59,7 +61,7 @@
                     `;
                     form += input;
                 }
-                form += `<div class="form-row"><button id="submit" type="submit"></button></form></div>`;
+                form += `<div class="form-row"><button id="submit" type="submit"></button></div></form>`;
                 document.getElementById("form").innerHTML = form;
                 document.getElementById("submit").innerHTML = i18n.reveal;
 
@@ -78,7 +80,13 @@
                     const values = [...data.values()];
                     try {            
                         // reveal secret
-                        document.getElementById("secret").innerHTML = secrets.combine(values);
+                        secret = secrets.combine(values).hexDecode();
+                        document.getElementById("secret").innerHTML = 
+                            `<textarea id="secretText" name="secret" required>
+                                ${secret}
+                            </textarea>
+                            <button onclick="copy()">Copy</button>
+                            `;
                     } catch (error) {
                         alert(error.message);
                     }
@@ -89,6 +97,25 @@
         } catch (error) {
             alert(error.message);
         }        
-    }  
+    }
+    // hex decode function
+    String.prototype.hexDecode = function () {
+        let j;
+        let hexes = this.match(/.{1,2}/g) || [];
+        let back = "";
+        for(j = 0; j<hexes.length; j++) {
+            back += String.fromCharCode(parseInt(hexes[j], 16));
+        }
+        return back;
+    }
+    function copy () {
+        
+        // get the input
+        const textarea = document.getElementById(`secretText`);
+        // select it
+        textarea.select();
+        // copy
+        document.execCommand("copy");
+    }
 </script>
 </html>

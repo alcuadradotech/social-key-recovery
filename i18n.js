@@ -44,30 +44,32 @@
             desc: "Share your keys with firends or family to recover them when needed.",
             home: "Home",
             share: "Share",
-            shareSecretsDesc: "Enter your <b>secret key</b>, then, enter the <b>number of friends, including you, of course!</b> that will share the key, and then, the number of <b>friends needed to recover</b> it. <br/>Finally click the <b>Share</b> button to get a <b>shared key for each friend</b>. You can then safely mail/print/write a key to a friend but remember: <b>these keys should NEVER remain together!</b>.",
+            shareSecretsDesc: "Enter your <b>key</b>, then, enter the <b>number of friends, including you, of course!</b> that will share the key, and then, the number of <b>friends needed to recover</b> it. <br/>Finally click the <b>Share</b> button to get a <b>shared key for each friend</b>. You can then safely mail/print/write a key to a friend but remember: <b>these keys should NEVER remain together!</b>.",
             reveal: "Reveal",
             revealSecretsDesc: "Enter the <b>number of friends</b> that are needed to recover the key. Then, each friend must <b>enter his share</b>. Finally click the <b>Reveal</b> button.",
-            shareSecrets: "Share secrets",
-            revealSecrets: "Reveal secrets",
-            secretLabel: "Secret (hex)",
+            shareSecrets: "Share keys",
+            revealSecrets: "Reveal keys",
+            secretLabel: "Key",
             friend: "Friend",
             friends: "Friend number",
-            requiredFriends: "Required friends"
+            requiredFriends: "Required friends",
+            subject: "Hi, this is your secret share"
         },
         es: {
-            title: "Secretos Compartidos",
-            desc: "Comparte tus claves privadas con tu familia o amigos para poder recuperarlas cuando sea necesario.",
+            title: "Claves Compartidas",
+            desc: "Comparte tus claves con tu familia o amigos para poder recuperarlas cuando sea necesario.",
             home: "Inicio",
             share: "Compartir",
-            shareSecretsDesc: "Introduce tu <b>clave privada</b>, el <b>número de amigos</b> que compartirán la clave, <b>¡contándote a tí, por supuesto!</b> y el número de <b>amigos necesarios para recuperarla</b>. <br/><br/>Finalmente, haz clic en el botón <b>Compartir</b> para obtener una <b>clave compartida para cada amigo</b>. Puedes enviar por correo/imprimir/escribir una clave a un amigo de forma segura, pero recuerda: <b>¡Estas claves NUNCA deben permanecer juntas!</b>.",
+            shareSecretsDesc: "Introduce tu <b>clave</b>, el <b>número de amigos</b> que compartirán la clave, <b>¡contándote a tí, por supuesto!</b> y el número de <b>amigos necesarios para recuperarla</b>. <br/><br/>Finalmente, haz clic en el botón <b>Compartir</b> para obtener una <b>clave compartida para cada amigo</b>. Puedes enviar por correo/imprimir/escribir una clave a un amigo de forma segura, pero recuerda: <b>¡Estas claves NUNCA deben permanecer juntas!</b>.",
             reveal: "Revelar",
             revealSecretsDesc: "Introduce el <b>número de amigos</b> que se necesitan para recuperar la clave. Cada amigo <b>debe introducir su parte</b>. Por último, haz clic en el botón <b>Revelar</b>.",
-            shareSecrets: "Compartir secretos",
-            revealSecrets: "Revelar secretos",
-            secretLabel: "Clave (en hexadecimal)",
+            shareSecrets: "Compartir claves",
+            revealSecrets: "Revelar claves",
+            secretLabel: "Clave",
             friend: "Amigo",
             friends: "Número de amigos",
-            requiredFriends: "Amigos requeridos"
+            requiredFriends: "Amigos requeridos",
+            subject: "Hola, esta es tu parte de la clave"
         }
     };
 

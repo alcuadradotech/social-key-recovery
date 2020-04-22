@@ -18,7 +18,7 @@
         <form class="form-inline">
             <div class="form-row">
                 <label for="secret" id="secretLabel"></label>
-                <input type="text" id="secret" name="secret" required>
+                <textarea id="secret" name="secret" required></textarea>
             </div>
 
             <div class="form-row">
@@ -44,6 +44,8 @@
     <script src="i18n.js"></script>
 </body>
 <script>
+    // the shares
+    let shares;
     // i18n
     document.title = i18n.title;
     document.getElementById("shareSecrets").innerHTML = i18n.shareSecrets;
@@ -68,22 +70,50 @@
         const data = event.formData;
         const values = [...data.values()];
         // get secret
-        const secret = values[0];
+        let secret = values[0], friends, requiredFriends;        
+        // get friends and required friends
         try {
             // get friends
-            const friends = parseInt(values[1]);
+            friends = parseInt(values[1]);
             // get requiredFriends
-            const requiredFriends = parseInt(values[2]);
-            try {
-                const shares = secrets.share(secret, friends, requiredFriends);            
-                document.getElementById("shares").innerHTML = shares
-                    .map(share => `<li>${share}</li>`).toString().replace(/,/g, '');                
-            } catch (error) {
-                alert(error.message);
-            }
+            requiredFriends = parseInt(values[2]);
         } catch (error) {
             alert(error.message);
-        }        
+            return;
+        }
+        // create the shares
+        try {
+            shares = secrets.share(secret.hexEncode(), friends, requiredFriends);
+            document.getElementById("shares").innerHTML = shares
+                .map((share, index) => 
+                    `<li>
+                        <input type="text" id="share${index}" value=${share}>
+                        <button onclick="copy(${index})">Copy</button>
+                        <a href="mailto:?subject=${i18n.subject}&body=${share}" target="_top">Send Mail</a>
+                     </li>`
+                ).toString().replace(/,/g, '');
+        } catch (error) {
+            alert(error.message);
+        }
     });
+    // hex encode function
+    String.prototype.hexEncode = function () {
+        let hex, i;
+        let result = "";
+        for (i=0; i<this.length; i++) {
+            // hex = this.charCodeAt(i).toString(16);
+            // result += ("000"+hex).slice(-4);
+            result += this.charCodeAt(i).toString(16);
+        }
+        return result;
+    }
+    function copy (index) {        
+        // get the input
+        const input = document.getElementById(`share${index}`);
+        // select it
+        input.select();
+        // copy
+        document.execCommand("copy");
+    }
 </script>
 </html>
