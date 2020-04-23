@@ -107,9 +107,12 @@
                 // recover secret
                 secret = secrets.combine(values).hexDecode();
                 document.getElementById("secret").innerHTML = 
-                    `
-                    <textarea id="secretText" name="secret" required>${secret}</textarea>
-                    <a class="copy" href="#copy" onclick="copy()">${i18n.copy}</button>
+                    `<form id="formSecretText" class="form-inline">
+                        <div class="form-row">
+                            <textarea id="secretText" name="secret" required>${secret}</textarea>
+                            <a class="copy" href="#copy" onclick="copy()">${i18n.copy}<span class="material-icons">done</span></button>
+                        </div>
+                    </form>
                     `;
             } catch (error) {
                 alert(error.message);
@@ -133,6 +136,8 @@
         textarea.select();
         // copy
         document.execCommand("copy");
+        // Add copied class
+        document.getElementById(`formSecretText`).classList.add("copied");
     }
 </script>
 </html>
