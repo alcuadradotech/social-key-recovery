@@ -134,7 +134,7 @@ p b {
     color: var(--page-bg-color-2);
 }
 ol {
-    padding: 0 0 0 40px;
+    padding: 2em 0 0 40px;
 }
 ol li {
     color: var(--key-color);
@@ -150,7 +150,7 @@ ol li {
     padding-top: 1em;
 }
 .form-row {
-    padding: 0 0 20px 20px;
+    padding: 0 20px 20px;
 }
 label {
     color: var(--highlight-color);
@@ -159,6 +159,17 @@ label {
     font-weight: 400;
     text-transform: uppercase;
     font-size: 1em;
+}
+label .number {
+    display: inline-block;
+    background-color: var(--icon-color);
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border-radius: 20px;
+    font-size: 1.2em;
+    line-height: 1.4;
+    font-weight: 400;
 }
 textarea {
     position: relative;
@@ -204,9 +215,13 @@ input[type="number"] {
 }
 input[type="text"] {
     width: 50%;
-    padding: 0.3em 5px;
+    padding: 0.3em 1%;
     font-size: 0.9em;
     margin-right: 3%;
+}
+#revealForm input[type="text"] {
+    width: 98%;
+
 }
 input[type="number"] {
     width: 60px;
@@ -214,6 +229,95 @@ input[type="number"] {
     font-size: 1.4em;
     text-align: center;
 }
+input[type=range] {
+    height: 5px;
+    -webkit-appearance: none;
+    margin: 10px 0;
+    width: 50%;
+    box-shadow: 0px 10px 0px var(--box-bg-color-1), 0px -10px 0px var(--box-bg-color-1);
+    background: var(--icon-color);
+  }
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 50%;
+    height: 5px;
+    cursor: pointer;
+    box-shadow: 0px 10px 0px var(--box-bg-color-1), 0px -10px 0px var(--box-bg-color-1);
+    background: var(--icon-color);
+    border-radius: 0;
+    border: 0px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 0px 0px 4px #000;
+    border: 1px solid var(--icon-color);
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    background: var(--key-color);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -8px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: var(--icon-color);
+}
+input[type=range]::-moz-range-track {
+    width: 50%;
+    height: 5px;
+    cursor: pointer;
+    box-shadow: 0px 10px 0px var(--box-bg-color-1), 0px -10px 0px var(--box-bg-color-1);
+    background: var(--icon-color);
+    border-radius: 0;
+    border: 0px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+    box-shadow: 0px 0px 4px #000;
+    border: 1px solid var(--icon-color);
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    background: var(--key-color);
+    cursor: pointer;
+}
+input[type=range]::-ms-track {
+    width: 50%;
+    height: 5px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+    background: var(--icon-color);
+    border: 0px solid #000000;
+    border-radius: 2px;
+    box-shadow: 0px 10px 0px var(--box-bg-color-1), 0px -10px 0px var(--box-bg-color-1);
+}
+input[type=range]::-ms-fill-upper {
+    background: var(--icon-color);
+    border: 0px solid #000000;
+    border-radius: 2px;
+    box-shadow: 0px 10px 0px var(--box-bg-color-1), 0px -10px 0px var(--box-bg-color-1);
+}
+input[type=range]::-ms-thumb {
+    margin-top: 1px;
+    box-shadow: 0px 0px 4px #000000;
+    border: 1px solid var(--icon-color);
+    height: 20px;
+    width: 20px;
+    border-radius: 25px;
+    background: #A1D0FF;
+    cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+    background: var(--icon-color);
+}
+input[type=range]:focus::-ms-fill-upper {
+    background: var(--icon-color);
+}
+
 button,
 .button {
     display: inline-block;
