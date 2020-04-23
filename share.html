@@ -53,8 +53,8 @@
     document.getElementById("shareSecrets").innerHTML = i18n.shareSecrets;
     document.getElementById("shareSecretsDesc").innerHTML = i18n.shareSecretsDesc;
     document.getElementById("secretLabel").innerHTML = i18n.secretLabel;
-    document.getElementById("personsLabel").innerHTML = `${i18n.persons} ${personsSlider.value}`;
-    document.getElementById("requiredPersonsLabel").innerHTML = `${i18n.requiredPersons} ${requiredPersonsSlider.value}`;
+    document.getElementById("personsLabel").innerHTML = `${i18n.persons} <span class="number">${personsSlider.value}</span>`;
+    document.getElementById("requiredPersonsLabel").innerHTML = `${i18n.requiredPersons} <span class="number">${requiredPersonsSlider.value}</span>`;
     document.getElementById("recover").innerHTML = i18n.recover;
     document.getElementById("home").innerHTML = i18n.home;
     document.getElementById("submit").innerHTML = i18n.share;
@@ -102,11 +102,11 @@
     // observe sliders
     personsSlider.oninput = (event) => {
         event.preventDefault();
-        document.getElementById("personsLabel").innerHTML = `${i18n.persons} ${event.target.value}`;
+        document.getElementById("personsLabel").innerHTML = `${i18n.persons} <span class="number">${event.target.value}</span>`;
     }
     requiredPersonsSlider.oninput = (event) => {
         event.preventDefault();
-        document.getElementById("requiredPersonsLabel").innerHTML = `${i18n.requiredPersons} ${event.target.value}`;
+        document.getElementById("requiredPersonsLabel").innerHTML = `${i18n.requiredPersons} <span class="number">${event.target.value}</span>`;
         document.getElementById("recoverHref").href=`recover.html?shares=${event.target.value}`;
     }
     // hex encode function

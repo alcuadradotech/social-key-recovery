@@ -54,7 +54,7 @@
     document.getElementById("recoverSecrets").innerHTML = i18n.recoverSecrets;
     document.getElementById("recoverSecretsDesc").innerHTML = i18n.recoverSecretsDesc;
     document.getElementById("share").innerHTML = i18n.share; 
-    document.getElementById("requiredPersonsLabel").innerHTML = `${i18n.requiredPersons} ${personsSlider.value}`;
+    document.getElementById("requiredPersonsLabel").innerHTML = `${i18n.requiredPersons} <span class="number">${personsSlider.value}</span>`;
     document.getElementById("home").innerHTML = i18n.home;
     // init the secrets library
     secrets.init();
@@ -65,7 +65,7 @@
         // reset results
         document.getElementById("secret").innerHTML = "";
         // set label
-        document.getElementById("requiredPersonsLabel").innerHTML = `${i18n.persons} ${event.target.value}`;
+        document.getElementById("requiredPersonsLabel").innerHTML = `${i18n.persons} <span class="number">${event.target.value}</span>`;
         // add inputs
         try {
             const friendsNumber = parseInt(event.target.value);
