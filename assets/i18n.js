@@ -54,7 +54,9 @@
             persons: "Key amount",
             copy: "Copy",
             requiredPersons: "Required persons",
-            subject: "Hi, this is your secret share"
+            subject: "Hi, this is your secret share",
+            copy: "Copy",
+            mail: "Send Mail"
         },
         es: {
             title: "Asegura tu secreto",
@@ -71,7 +73,9 @@
             persons: "Cantidad de claves",
             copy: "Copiar",
             requiredPersons: "Claves requeridas",
-            subject: "Hola, esta es tu parte de la clave"
+            subject: "Hola, esta es tu parte de la clave",
+            copy: "Copiar",
+            mail: "Enviar Correo"
         }
     };
 
