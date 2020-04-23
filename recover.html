@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/vendors/iconfont/material-icons.css">
     <link rel="stylesheet" type="text/css" href="assets/style.css">
     <title>Secrets</title>
 </head>
@@ -18,8 +18,10 @@
         <br>
 
         <label for="requiredPersons" id="requiredPersonsLabel"></label>
-        <input type="number" id="requiredPersons" name="requiredPersons" size="1" min="2" value="2" required>
-        <div id="form"></div>
+        <input type="range" id="requiredPersons" name="requiredPersons" min="2" max="5" value="2" class="slider">
+        <form id="revealForm" name="revealForm" class="form-inline">
+            
+        </form>
         <div id="secret"></div>
 
         <br>
@@ -35,67 +37,82 @@
 <script>
     // the secret
     let secret;
+    // get the query string or initialize to 2
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const shares = urlParams.get('shares');
+    try {
+        const sharesInt = parseInt(urlParams.get('shares'));
+        renderInputs(sharesInt > 1 && sharesInt <=5 ? sharesInt : 2);
+    } catch (error) {
+        renderInputs(2);
+    }
+    // sliders
+    const personsSlider = document.getElementById("requiredPersons");
     // i18n
     document.title = i18n.title;
     document.getElementById("recoverSecrets").innerHTML = i18n.recoverSecrets;
     document.getElementById("recoverSecretsDesc").innerHTML = i18n.recoverSecretsDesc;
     document.getElementById("share").innerHTML = i18n.share; 
-    document.getElementById("requiredPersonsLabel").innerHTML = i18n.requiredPersons;
-    const requiredPersons = document.getElementById("requiredPersons");
+    document.getElementById("requiredPersonsLabel").innerHTML = `${i18n.requiredPersons} ${personsSlider.value}`;
     document.getElementById("home").innerHTML = i18n.home;
+    // init the secrets library
+    secrets.init();
 
     // observe persons number changes
-    requiredPersons.onchange = (event) => {
+    personsSlider.oninput = (event) => {
         event.preventDefault();
+        // reset results
+        document.getElementById("secret").innerHTML = "";
+        // set label
+        document.getElementById("requiredPersonsLabel").innerHTML = `${i18n.persons} ${event.target.value}`;
+        // add inputs
         try {
             const friendsNumber = parseInt(event.target.value);
-            if (friendsNumber > 1) {
-                let form = `<form class="form-inline">`
-                for (let index = 0; index < friendsNumber; index++) {
-                    const input = `
-                        <div class="form-row">
-                        <label for="share${index}">${i18n.person} ${index + 1}</label>
-                        <input type="text" id="share${index}" name="share${index}" required>
-                        </div>
-                    `;
-                    form += input;
-                }
-                form += `<div class="center"><button id="submit" type="submit"></button></div></form>`;
-                document.getElementById("form").innerHTML = form;
-                document.getElementById("submit").innerHTML = i18n.recover;
-
-                // init the secrets library
-                secrets.init();
-                // get the form
-                const domForm = document.forms[0];
-                // listen for submit
-                domForm.addEventListener("submit", function(event) {
-                    event.preventDefault();
-                    new FormData(domForm);
-                });
-                // listen for domForm data
-                domForm.addEventListener("formdata", event => {
-                    const data = event.formData;
-                    const values = [...data.values()];
-                    try {            
-                        // recover secret
-                        secret = secrets.combine(values).hexDecode();
-                        document.getElementById("secret").innerHTML = 
-                            `<textarea id="secretText" name="secret" required>
-                                ${secret}
-                            </textarea>
-                            <a class="copy" href="#copy" onclick="copy()">Copy</button>
-                            `;
-                    } catch (error) {
-                        alert(error.message);
-                    }
-                });
-            } else {
-                document.getElementById("form").innerHTML = "";
-            }
+            // render inputs
+            renderInputs(friendsNumber);
         } catch (error) {
             alert(error.message);
         }        
+    }
+    // render form inputs
+    function renderInputs (friendsNumber) {
+        let inputs = ``;
+        for (let index = 0; index < friendsNumber; index++) {
+            const input = `
+                <div class="form-row">
+                <label for="share${index}">${i18n.person} ${index + 1}</label>
+                <input type="text" id="share${index}" name="share${index}" required>
+                </div>
+            `;
+            inputs += input;
+        }
+        inputs += `<div class="center"><button id="submit" type="submit">${i18n.recover}</button></div>`;
+        document.getElementById("revealForm").innerHTML = inputs;
+        // get the form
+        const domForm = document.forms.revealForm;
+        // listen for submit
+        domForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            new FormData(domForm);
+        });
+        // listen for domForm data
+        domForm.addEventListener("formdata", event => {
+            const data = event.formData;
+            const values = [...data.values()];
+            try {            
+                // recover secret
+                secret = secrets.combine(values).hexDecode();
+                document.getElementById("secret").innerHTML = 
+                    `<textarea id="secretText" name="secret" required>
+                        ${secret}
+                    </textarea>
+                    <a class="copy" href="#copy" onclick="copy()">Copy</button>
+                    `;
+            } catch (error) {
+                alert(error.message);
+            }
+        });
     }
     // hex decode function
     String.prototype.hexDecode = function () {
@@ -108,7 +125,6 @@
         return back;
     }
     function copy () {
-        
         // get the input
         const textarea = document.getElementById(`secretText`);
         // select it

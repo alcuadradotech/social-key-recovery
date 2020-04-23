@@ -1,5 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300,400,700&display=swap');
-
+/* barlow-regular - latin */
+@font-face {
+    font-family: 'Barlow';
+    font-style: normal;
+    font-weight: 400;
+    src: url('vendors/fonts/barlow-v4-latin/barlow-v4-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local('Barlow Regular'), local('Barlow-Regular'),
+         url('vendors/fonts/barlow-v4-latin/barlow-v4-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('vendors/fonts/barlow-v4-latin/barlow-v4-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('vendors/fonts/barlow-v4-latin/barlow-v4-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('vendors/fonts/barlow-v4-latin/barlow-v4-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('vendors/fonts/barlow-v4-latin/barlow-v4-latin-regular.svg#Barlow') format('svg'); /* Legacy iOS */
+  }
+  
 :root {
     --text-color: #b1b1f0;
     --key-color: #b1b1f0;

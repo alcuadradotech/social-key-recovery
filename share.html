@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/vendors/iconfont/material-icons.css">
     <link rel="stylesheet" type="text/css" href="assets/style.css">
     <title>Secrets</title>
 </head>
@@ -22,13 +22,13 @@
             </div>
 
             <div class="form-row">
-                <label for="persons" id="persons"></label>
-                <input type="number" id="persons" name="persons" size="1" min="2" value="2" required>
+                <label for="persons" id="personsLabel"></label>
+                <input type="range" id="persons" name="persons" min="2" max="5" value="2" class="slider">
             </div>
             
             <div class="form-row">
-                <label for="requiredPersons" id="requiredPersons"></label>
-                <input type="number" id="requiredPersons" name="requiredPersons" size="1" min="2" value="2" required>
+                <label for="requiredPersons" id="requiredPersonsLabel"></label>
+                <input type="range" id="requiredPersons" name="requiredPersons" min="2" max="5" value="2" class="slider" >
             </div>
             <div class="center">
                 <button id="submit" type="submit"></button>
@@ -36,7 +36,7 @@
         </form>
         <ol id="shares"></ol>
         <footer>
-            <a href="recover.html"><span class="material-icons flip-horizontal">share</span> <span id="recover"></span></a>
+            <a id="recoverHref" href="recover.html?shares=2"><span class="material-icons flip-horizontal">share</span> <span id="recover"></span></a>
         </footer>
     </div>
     <script src="assets/vendors/secrets.js"></script>
@@ -45,13 +45,16 @@
 <script>
     // the shares
     let shares;
+    // sliders
+    const personsSlider = document.getElementById("persons");
+    const requiredPersonsSlider = document.getElementById("requiredPersons");    
     // i18n
     document.title = i18n.title;
     document.getElementById("shareSecrets").innerHTML = i18n.shareSecrets;
     document.getElementById("shareSecretsDesc").innerHTML = i18n.shareSecretsDesc;
     document.getElementById("secretLabel").innerHTML = i18n.secretLabel;
-    document.getElementById("persons").innerHTML = i18n.persons;
-    document.getElementById("requiredPersons").innerHTML = i18n.requiredPersons;
+    document.getElementById("personsLabel").innerHTML = `${i18n.persons} ${personsSlider.value}`;
+    document.getElementById("requiredPersonsLabel").innerHTML = `${i18n.requiredPersons} ${requiredPersonsSlider.value}`;
     document.getElementById("recover").innerHTML = i18n.recover;
     document.getElementById("home").innerHTML = i18n.home;
     document.getElementById("submit").innerHTML = i18n.share;
@@ -95,13 +98,21 @@
             alert(error.message);
         }
     });
+    // observe sliders
+    personsSlider.oninput = (event) => {
+        event.preventDefault();
+        document.getElementById("personsLabel").innerHTML = `${i18n.persons} ${event.target.value}`;
+    }
+    requiredPersonsSlider.oninput = (event) => {
+        event.preventDefault();
+        document.getElementById("requiredPersonsLabel").innerHTML = `${i18n.requiredPersons} ${event.target.value}`;
+        document.getElementById("recoverHref").href=`recover.html?shares=${event.target.value}`;
+    }
     // hex encode function
     String.prototype.hexEncode = function () {
         let hex, i;
         let result = "";
         for (i=0; i<this.length; i++) {
-            // hex = this.charCodeAt(i).toString(16);
-            // result += ("000"+hex).slice(-4);
             result += this.charCodeAt(i).toString(16);
         }
         return result;
