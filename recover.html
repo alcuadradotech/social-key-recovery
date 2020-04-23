@@ -109,7 +109,7 @@
                 document.getElementById("secret").innerHTML = 
                     `
                     <textarea id="secretText" name="secret" required>${secret}</textarea>
-                    <a class="copy" href="#copy" onclick="copy()">Copy</button>
+                    <a class="copy" href="#copy" onclick="copy()">${i18n.copy}</button>
                     `;
             } catch (error) {
                 alert(error.message);

@@ -86,12 +86,13 @@
         // create the shares
         try {
             shares = secrets.share(secret.hexEncode(), persons, requiredPersons);
+
             document.getElementById("shares").innerHTML = shares
                 .map((share, index) => 
                     `<li id="share-list-element-${index}" class="share-list-element">
                         <input type="text" id="share${index}" value=${share}>
-                        <a class="copy" href="#copy" onclick="copy(${index})">Copy <span class="material-icons">done</span></button>
-                        <a class="mail" href="mailto:?subject=${i18n.subject}&body=${share}" target="_top">Send Mail</a>
+                        <a class="copy" href="#copy" onclick="copy(${index})">${i18n.copy}<span class="material-icons">done</span></button>
+                        <a class="mail" href="mailto:?subject=${i18n.subject}%20(1/${requiredPersons})&body=${share}" target="_top">${i18n.mail}</a>
                      </li>`
                 ).toString().replace(/,/g, '');
         } catch (error) {
