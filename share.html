@@ -124,13 +124,8 @@
         input.select();
         // copy
         document.execCommand("copy");
-        
         // Remove class from all other items first
-        /*
-        document.getElementsByClassName('share-list-element').forEach(function( current, index ){
-            current.classList.remove("copied")
-        }, this );
-        */
+        document.querySelectorAll("li").forEach(el => el.classList.remove("copied"));
         // Add class to copied item
         document.getElementById(`share-list-element-${index}`).classList.add("copied");
     }
