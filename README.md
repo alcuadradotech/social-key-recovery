@@ -2,7 +2,7 @@
 
 Share your keys with firends or family to recover them when needed.
 
-<sub><sup>This is published [here](https://al2blockchain.github.io/social-key-recovery) as a demo, but you **should** download it and use it locally in your computer (if you trust it!).</sup></sub>
+<sub><sup>This is published [here](https://alcuadradotech.github.io/social-key-recovery/) as a demo, but you **should** download it and use it locally in your computer (if you trust it!).</sup></sub>
 
 ### Usage
 
