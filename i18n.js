@@ -55,14 +55,14 @@
             requiredFriends: "Required friends"
         },
         es: {
-            title: "Comparte tu claves privadas",
+            title: "Comparte tus claves privadas",
             desc: "Comparte tus claves privadas con tu familia o amigos para poder recuperarlas cuando sea necesario.",
             home: "Inicio",
             share: "Compartir",
             shareSecretsDesc: "Introduce tu <b>clave privada</b>, el <b>número de amigos</b> que compartirán la clave, <b>¡contándote a tí, por supuesto!</b> y el número de <b>amigos necesarios para recuperarla</b>. <br/><br/>Finalmente, haz clic en el botón <b>Compartir</b> para obtener una <b>clave compartida para cada amigo</b>. Puedes enviar por correo/imprimir/escribir una clave a un amigo de forma segura, pero recuerda: <b>¡Estas claves NUNCA deben permanecer juntas!</b>.",
             reveal: "Revelar",
             revealSecretsDesc: "Introduce el <b>número de amigos</b> que se necesitan para recuperar la clave. Cada amigo <b>debe introducir su parte</b>. Por último, haz clic en el botón <b>Revelar</b>.",
-            shareSecrets: "Compartir secretos",
+            shareSecrets: "Comparte tus claves privadas",
             revealSecrets: "Revelar secretos",
             secretLabel: "Clave (en hexadecimal)",
             friend: "Amigo",
