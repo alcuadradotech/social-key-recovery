@@ -55,7 +55,7 @@
             requiredFriends: "Required friends"
         },
         es: {
-            title: "Secretos Compartidos",
+            title: "Comparte tu claves privadas",
             desc: "Comparte tus claves privadas con tu familia o amigos para poder recuperarlas cuando sea necesario.",
             home: "Inicio",
             share: "Compartir",
